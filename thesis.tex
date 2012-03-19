@@ -57,7 +57,7 @@
 %\newenvironment{chabstract}{\section*{}}{}
 
 % Set section depth on table of contents
-\setcounter{secnumdepth}{2}
+\setcounter{secnumdepth}{3}
 
 % Use AMS math
 \usepackage{amsmath}
@@ -110,7 +110,6 @@ M.S.E.S., Mechanical Engineering (Naval Postgraduate School) 2001}
 \field{Integrative Biology}
 \campus{Berkeley}
 
-% For makeindex
 \makeindex
 
 
@@ -123,28 +122,19 @@ M.S.E.S., Mechanical Engineering (Naval Postgraduate School) 2001}
 \copyrightpage
 \include{abstract}
 
-%\begin{frontmatter}
 \frontmatter
-\include{dedication}
-\tableofcontents\clearpage
-\listoffigures\clearpage
-\listoftables
+\include{dedication}%\clearpage
+\tableofcontents%\clearpage
+\listoffigures%\clearpage
+\listoftables%\clearpage
 \include{acknowledgements}
-%\end{frontmatter}
 
-% Main stuff
-%\pagestyle{headings}
-\mainmatter 
+\mainmatter %\pagestyle{headings}
 \include{ch-intro}
-\citep{Holderread:2001}
-%\include{chap1}
-%\include{chap2}
 
-% Appendices
 \appendix
 % \chapter{More Monticello Candidates}
 
-% Bibliography and index
 \pagestyle{plain}
 \bibliography{thesis}
 \printindex
