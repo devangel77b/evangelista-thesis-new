@@ -25,8 +25,10 @@
 \usepackage[usenames,dvipsnames]{color}
 \usepackage{makeidx}
 \usepackage{siunitx}
+\usepackage{rotating}
 
 % PDF metadata
+\usepackage{url}
 \usepackage{hyperref}
 \hypersetup{pdftitle={Something about Aerial Righting, Directed Aerial Descent, Maneuverability and Stability, and their Implications for the Evolution of Flight in Vertebrates}}
 %\hypersetup{pdfauthor={Dennis Jos{\'e} Evangelista}}
@@ -34,14 +36,18 @@
 \hypersetup{pdfsubject={biomechanics}}
 \hypersetup{pdfkeywords={biomechanics, evolution, integrative biology, organismic}}
 \hypersetup{colorlinks=true,citecolor=Violet,linkcolor=Blue,urlcolor=Red}
+\hypersetup{bookmarks=true,bookmarksopen=true,hyperfootnotes=false,pdfpagemode=UseOutlines}
 
 % Biology style references
-\usepackage[round]{natbib}
+\usepackage[round, sort&compress]{natbib}
 \setcitestyle{authoryear, round, comma, aysep={;}, yysep={,}, notesep={, }}
 \bibliographystyle{apalike}
 %\def\newblock{\hskip .11em plus .33em minus .07em} % bug workaround
 % show doi in citations
 \newcommand*{\doi}[1]{\href{http://dx.doi.org/\detokenize{#1}}{doi: \detokenize{#1}}}
+\renewcommand\bibname{References}
+\usepackage{bibentry}
+
 
 % For chapter bibliographies
 %\usepackage[sectionbib,duplicate]{chapterbib}
@@ -50,16 +56,45 @@
 %\newenvironment{chabstract}{\begin{quote}\small}{\end{quote}}
 %\newenvironment{chabstract}{\section*{}}{}
 
+% Set section depth on table of contents
+\setcounter{secnumdepth}{2}
+
 % Use AMS math
 \usepackage{amsmath}
 
+% Yonatan used these?
+%\usepackage{setspace}
+%\usepackage{lscape}
+%\usepackage{lineno}   % line numbering
+%\modulolinenumbers[5] % line numbering
+%\usepackage[hang,small,bf]{caption} % captions?
+%\usepackage{xspace}
+
 % Commands for Genus species names
 \newcommand{\species}[1]{\emph{#1}}
+\newcommand{\Calypteanna}{\species{Calypte anna}}
+\newcommand{\Draco}{\species{Draco}}
+\newcommand{\Archaeopteryx}{\species{\dag Archaeopteryx}}
+\newcommand{\Microraptor}{\species{\dag Microraptor}}
+\newcommand{\Microraptorgui}{\species{\dag Microraptor gui}}
+\newcommand{\Anchiornis}{\species{\dag Anchiornis}}
+\newcommand{\Mgui}{\species{\dag M.\ gui}}
+\newcommand{\Drosophila}{\species{Drosophila}}
+\newcommand{\Alectorischukar}{\species{Alectoris chukar}}
+\newcommand{\Achukar}{\species{A.\ chukar}}
+
+
+
+
+
+
+
 
 
 
 % Declarations for Front Matter
-\title{Something about Aerial Righting, Directed Aerial Descent, Maneuverability and Stability, and their Implications for the Evolution of Flight in Vertebrates}
+\title{Aerial righting, directed aerial descent, and maneuvering in the evolution of flight in birds}
+%\title{Something about Aerial Righting, Directed Aerial Descent, Maneuverability and Stability, and their Implications for the Evolution of Flight in Vertebrates}
 \author{Dennis J.\ Evangelista}
 \degreesemester{Fall}
 \degreeyear{2012}
@@ -88,28 +123,30 @@ M.S.E.S., Mechanical Engineering (Naval Postgraduate School) 2001}
 \copyrightpage
 \include{abstract}
 
-\begin{frontmatter}
+%\begin{frontmatter}
+\frontmatter
 \include{dedication}
-\tableofcontents%\clearpage
-\listoffigures%\clearpage
+\tableofcontents\clearpage
+\listoffigures\clearpage
 \listoftables
 \include{acknowledgements}
-\end{frontmatter}
+%\end{frontmatter}
 
 % Main stuff
-\mainmatter %\pagestyle{headings}
+%\pagestyle{headings}
+\mainmatter 
+\include{ch-intro}
 \citep{Holderread:2001}
 %\include{chap1}
 %\include{chap2}
 
 % Appendices
-% \appendix
+\appendix
 % \chapter{More Monticello Candidates}
 
-% Bibliography
+% Bibliography and index
+\pagestyle{plain}
 \bibliography{thesis}
-
-% Index
-%\printindex
+\printindex
 
 \end{document}
