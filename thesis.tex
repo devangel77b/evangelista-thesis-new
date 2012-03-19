@@ -40,10 +40,10 @@
 % Biology style references
 \usepackage[round, sort&compress]{natbib}
 \setcitestyle{authoryear, round, comma, aysep={;}, yysep={,}, notesep={, }}
-\bibliographystyle{apalike}
+\bibliographystyle{jeb}
 %\def\newblock{\hskip .11em plus .33em minus .07em} % bug workaround
 % show doi in citations
-\newcommand*{\doi}[1]{\href{http://dx.doi.org/\detokenize{#1}}{doi: \detokenize{#1}}}
+\newcommand*{\doi}[1]{\href{http://dx.doi.org/\detokenize{#1}}{\texttt{doi:\detokenize{#1}}}}
 \renewcommand\bibname{References}
 \usepackage{bibentry}
 
