@@ -1,0 +1,115 @@
+\documentclass{ucbthesis}
+%\usepackage{biblatex}
+
+% Double spacing, if you want it.
+% \def\dsp{\def\baselinestretch{2.0}\large\normalsize}
+% \dsp
+
+% If the Grad. Division insists that the first paragraph of a section
+% be indented (like the others), then include this line:
+% \usepackage{indentfirst}
+
+
+% For revision control
+\usepackage{rcs-multi}
+\rcsid{$Id$}
+\rcsid{$Header$}
+\rcskwsave{$Author$}
+\rcskwsave{$Date$} 
+\rcskwsave{$Revision$}
+%\rcsRegisterAuthor{devangel}{Dennis Jos{\'e} Evangelista}
+\rcsRegisterAuthor{devangel}{Dennis J. Evangelista}
+
+% I typically use these
+\usepackage{graphicx}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{makeidx}
+\usepackage{siunitx}
+
+% PDF metadata
+\usepackage{hyperref}
+\hypersetup{pdftitle={Something about Aerial Righting, Directed Aerial Descent, Maneuverability and Stability, and their Implications for the Evolution of Flight in Vertebrates}}
+%\hypersetup{pdfauthor={Dennis Jos{\'e} Evangelista}}
+\hypersetup{pdfauthor={Dennis J. Evangelista}}
+\hypersetup{pdfsubject={biomechanics}}
+\hypersetup{pdfkeywords={biomechanics, evolution, integrative biology, organismic}}
+\hypersetup{colorlinks=true,citecolor=Violet,linkcolor=Blue,urlcolor=Red}
+
+% Biology style references
+\usepackage[round]{natbib}
+\setcitestyle{authoryear, round, comma, aysep={;}, yysep={,}, notesep={, }}
+\bibliographystyle{apalike}
+%\def\newblock{\hskip .11em plus .33em minus .07em} % bug workaround
+% show doi in citations
+\newcommand*{\doi}[1]{\href{http://dx.doi.org/\detokenize{#1}}{doi: \detokenize{#1}}}
+
+% For chapter bibliographies
+%\usepackage[sectionbib,duplicate]{chapterbib}
+
+% For chapter abstracts
+%\newenvironment{chabstract}{\begin{quote}\small}{\end{quote}}
+%\newenvironment{chabstract}{\section*{}}{}
+
+% Use AMS math
+\usepackage{amsmath}
+
+% Commands for Genus species names
+\newcommand{\species}[1]{\emph{#1}}
+
+
+
+% Declarations for Front Matter
+\title{Something about Aerial Righting, Directed Aerial Descent, Maneuverability and Stability, and their Implications for the Evolution of Flight in Vertebrates}
+\author{Dennis J.\ Evangelista}
+\degreesemester{Fall}
+\degreeyear{2012}
+\degree{Doctor of Philosophy}
+\chair{Professor Robert Dudley}
+\othermembers{Professor J.\ A.\ McGuire \\
+  Professor Ronald Fearing}
+\numberofmembers{3}
+\prevdegrees{B.S., Mechanical Engineering (Massachusetts Institute of Technology) 1999\\
+B.S., Electrical Engineering (Massachusetts Institute of Technology) 1999\\
+M.Eng., Electrical Engineering and Computer Science (Massachusetts Institute of Technology) 1999\\
+M.S.E.S., Mechanical Engineering (Naval Postgraduate School) 2001}
+\field{Integrative Biology}
+\campus{Berkeley}
+
+% For makeindex
+\makeindex
+
+
+
+
+
+\begin{document}
+\maketitle
+\approvalpage
+\copyrightpage
+\include{abstract}
+
+\begin{frontmatter}
+\include{dedication}
+\tableofcontents%\clearpage
+\listoffigures%\clearpage
+\listoftables
+\include{acknowledgements}
+\end{frontmatter}
+
+% Main stuff
+\mainmatter %\pagestyle{headings}
+\citep{Holderread:2001}
+%\include{chap1}
+%\include{chap2}
+
+% Appendices
+% \appendix
+% \chapter{More Monticello Candidates}
+
+% Bibliography
+\bibliography{thesis}
+
+% Index
+%\printindex
+
+\end{document}
