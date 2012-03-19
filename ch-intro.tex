@@ -1,13 +1,19 @@
-\chapter{Introduction}
-\label{ch:intro}
-\index{introduction|(}
-
 \rcsid{$Id$}
 \rcsid{$Header$}
 \rcskwsave{$Author$}
 \rcskwsave{$Date$} 
 \rcskwsave{$Revision$}
 
+
+
+% Turn off numbering for this chapter only!
+\setcounter{secnumdepth}{-1}
+\renewcommand{\thefigure}{}
+\renewcommand{\thetable}{}
+
+\chapter{Introduction}
+\label{ch:intro}
+\index{introduction|(}
 
 %\begin{abstract}
 This introductory chapter provides a roadmap for the thesis.  The over-arching question is what is the role of aerial righting, directed aerial descent, and maneuvering in general in the early evolution of flight in birds.  To address this question, three main studies are conducted:  a study of incipient flight behaviors in young birds over ontogeny; a detailed study of maneuvering using physical models of a likely ancestral bird morphology; and a comparative study of maneuvering ability examining several stem-group birds.  In addition to these, several side examinations necessary for benchmarking methods were serendipitously used to comment on broader questions of maneuvering ability within the vertebrates.  
@@ -153,3 +159,9 @@ To examine damage from falls versus body size, data mining of previously publish
 
 
 \index{introduction|)}
+
+% Turn numbering back on
+\setcounter{secnumdepth}{3}
+\renewcommand{\thefigure}{\thechapter.\arabic{figure}}
+\renewcommand{\thetable}{\thechapter.\arabic{table}}
+
