@@ -11,29 +11,28 @@ This is my thesis.
 
 To compile
 ==========
-1.  Run pdfLaTeX on main.tex
-2.  Run bibtex on main.tex
-3.  Run pdfLaTeX twice. 
-4.  Run make index on main.tex
-5.  Run pdfLaTeX twice. 
+1.  Run ``pdfLaTeX main.tex``
+2.  Run ``bibtex main.tex``
+3.  Run ``pdfLaTeX`` again twice to fix references. 
+4.  Run ``makeindex main.tex`` to build index
+5.  Run ``pdfLaTeX`` twice. 
 
-All references for a particular chapter must be added to the main bibliography file, now in thesis.bib. 
+**All references for a particular chapter must be added to the main bibliography file**, now in ``thesis.bib``. 
 
 Revision control and syncing using Mercurial
 --------------------------------------------
-1. After making edits, commit your changes using:  hg commit -m "Enter a useful comment here."
-2. To push your changes to the repository, use: hg push
-3. To pull changes from the repository, use: hg pull, then hg update
-4. To clone the repository using ssh, for example:
-hg clone ssh:\\hg@bitbucket.org\devangel77b\evangelista-thesis-new
+1. After making edits, commit your changes using ``hg commit -m "Enter a useful comment here."``
+2. To push your changes to the repository, use ``hg push``
+3. To pull changes from the repository, use ``hg pull, then hg update``
+4. To clone the repository using ssh, for example ``hg clone ssh:\\hg@bitbucket.org\devangel77b\evangelista-thesis-new``
 
 Revision control block on top of tex file
 -----------------------------------------
-Do not edit this.  After committing changes (hg commit -m "Made some changes"), update the block using the following:
-1.  hg kwshrink
-2.  hg kwexpand
+Do not edit this.  After committing changes (``hg commit -m "Made some changes"``), update the block using the following:
+1. ``hg kwshrink``
+2. ``hg kwexpand``
 
-Authors should have their usernames registered in main.tex
+Authors should have their usernames registered in ``main.tex``
 
 
 
