@@ -25,6 +25,9 @@
 \usepackage{makeidx}
 \usepackage{siunitx}
 \usepackage{rotating}
+\usepackage{multirow}
+\usepackage{colortbl}
+
 
 % PDF metadata
 \usepackage{url}
@@ -81,8 +84,11 @@
 \newcommand{\Drosophila}{\species{Drosophila}}
 \newcommand{\Alectorischukar}{\species{Alectoris chukar}}
 \newcommand{\Achukar}{\species{A.\ chukar}}
-
-
+\newcommand{\Alectoris}{\species{Alectoris}}
+\newcommand{\Anasplatyrhynchos}{\species{Anas platyrhynchos}}
+\newcommand{\Aplatyrhynchos}{\species{A.\ platyrhynchos}}
+\newcommand{\Anas}{\species{Anas}}
+\DeclareMathOperator*{\argmin}{\arg\!\min}
 
 
 
@@ -112,7 +118,8 @@ M.S.E.S., Mechanical Engineering (Naval Postgraduate School) 2001}
 
 
 
-
+% if only working on one chapter for the day
+\includeonly{ch-1,app-cam,app-tdd,app-ang}
 
 \begin{document}
 \maketitle
@@ -129,9 +136,13 @@ M.S.E.S., Mechanical Engineering (Naval Postgraduate School) 2001}
 
 \mainmatter %\pagestyle{headings}
 \include{ch-intro}
+\include{ch-1}
 
 \appendix
 \include{app-aup}
+\include{app-cam}
+\include{app-tdd}
+\include{app-ang}
 
 \pagestyle{plain}
 \bibliography{references/thesis}

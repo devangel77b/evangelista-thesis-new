@@ -1,0 +1,180 @@
+\rcsid{$Id$}
+\rcsid{$Header$}
+\rcskwsave{$Author$}
+\rcskwsave{$Date$} 
+\rcskwsave{$Revision$}
+
+\chapter{Camera calibration and three-dimensional reconstruction routine}
+\label{app:cam}
+\index{camera calibration|(}
+
+This appendix describes a method to recover the three-dimensional (3D) position of birds and their appendages using several two-dimensional (2D) views, obtained from cheap fixed-focus FlipHD cameras.  The methods are also applicable to AOS and Fastec high speed cameras used in other parts of the work.  
+
+While the techniques are similar to those used to track ants in the rain forest \cite{Munk:2011}, and to methods I used to track ballistically launched amphipods (cite me), there are some important differences incorporated here in order to make simplify the calibration procedure and setup. The primary difference is the use of multiple views of multiple poses of a two dimensional calibration object (chessboard), enabled by use of homographies, freeing the setup from the need for a large, fixed calibration shape that remains present and un-moved/un-altered through all filming runs.  This reduces setup time and is critical when cameras must be shared between multiple setups and must be setup and broken down each day or multiple times each day.  
+
+% needed in second column of first page if using \IEEEpubid
+%\IEEEpubidadjcol
+
+
+\section{Camera extrinsics}
+In computer vision applications, it is typical to convert from world coordinates to camera-fixed spatial coordinates using a translation $\vec{t}$, followed by rotations about $\hat{z}$, then the new $\hat{y}$, then the new $\hat{x}$ (in that order) \cite{Bradski:2008}. 
+\begin{equation}
+\mathbf{R_x}(\psi) =
+\begin{pmatrix}
+1 & 0 & 0 \\ 0 & \cos{\psi} & \sin{\psi} \\ 0 & -\sin{\psi} & \cos{\psi}
+\end{pmatrix}
+\end{equation}
+\begin{equation}
+\mathbf{R_y}(\phi) =
+\begin{pmatrix}
+\cos{\phi} & 0 & -\sin{\phi} \\
+0 & 1 & 0 \\
+\sin{\phi} & 0 & \cos{\phi}
+\end{pmatrix}
+\end{equation}
+\begin{equation}
+\mathbf{R_z}(\theta) = 
+\begin{pmatrix}
+\cos{\theta} & \sin{\theta} & 0 \\
+-\sin{\theta} & \cos{\theta} & 0 \\
+0 & 0 & 1
+\end{pmatrix}
+\end{equation}
+\begin{equation}
+\vec{x}_{cam} = 
+\mathbf{R_x R_y R_z}
+(\vec{x}_{world} - \vec{t})
+\end{equation}
+\begin{equation}
+\vec{x}_{cam} = 
+\mathbf{R}
+(\vec{x}_{world} - \vec{t})
+\end{equation}
+The inverse of this operation is given by:
+\begin{equation}
+\vec{x}_{world}
+=
+\mathbf{R}^{-1} \vec{x}_{cam} + \vec{t} 
+\end{equation}
+where
+\begin{equation}
+\mathbf{R}^{-1} =
+\mathbf{R}^T =
+\mathbf{R_z}^T \mathbf{R_y}^T
+\mathbf{R_x}^T
+\end{equation}
+Alternatives to this formulation include axis-angle and quaternion methods, which avoid problems at \ang{+-90} pitch angles.  This is often handy, e.g. when integrating inertial sensor data, but for now we will stick to the orthogonal rotation matrix method as it is standard in computer graphics practice. 
+
+\section{Camera intrinsics and pinhole model}
+It is useful at this point to introduce homogenous coordinates, in which a point in an $n$-dimensional space is expressed as an $n+1$-dimensional vector; any two points whose values are proportional (``within a scale factor'') are equivalent \cite{Bradski:2008}.  The pinhole model of camera is thus: 
+\begin{equation}
+\begin{pmatrix}
+x \\ y \\ w
+\end{pmatrix}_{im}
+=
+\begin{pmatrix}
+f_x & 0 & c_x \\
+0 & f_y & c_y \\
+0 & 0 & 1
+\end{pmatrix}
+\begin{pmatrix}
+x \\ y \\ z
+\end{pmatrix}_{cam}
+\end{equation}
+where $f$ is the focal length and $c$ is the displacement of the imaging plane from optical zero.  To find pixel coordinates we make use of the equivalence of homogenous coordinates, i.e. $x_{pal} = x_{im}/w_{im}$ and $y_{pel} = y_{im}/w_{im}$.
+
+\section{Homography, chessboards, and calibration}
+Ignoring distortion, we can map real world coordinates to image coordinates using the following:
+\begin{equation}
+\begin{pmatrix}
+x \\ y \\ 1
+\end{pmatrix}_{im}
+=
+s
+\begin{pmatrix}
+f_x & 0 & c_x \\
+0 & f_y & c_y \\
+0 & 0 & 1
+\end{pmatrix}
+\begin{pmatrix}
+\vdots & \vdots & \vdots & \vdots \\
+\vec{r}_1    & \vec{r}_2    & \vec{r}_3    & \vec{t} \\
+\vdots & \vdots & \vdots & \vdots
+\end{pmatrix}
+\begin{pmatrix}
+x \\ y \\ z \\ 1
+\end{pmatrix}_{world}
+\end{equation}
+Rearranging for the case of a flat chessboard on which we arbitrarily pick $z=0$,
+\begin{equation}
+\begin{pmatrix}
+x \\ y \\ 1
+\end{pmatrix}_{im}
+=
+s
+\begin{pmatrix}
+f_x & 0 & c_x \\
+0 & f_y & c_y \\
+0 & 0 & 1
+\end{pmatrix}
+\begin{pmatrix}
+\vdots & \vdots & \vdots \\
+\vec{r}_1 & \vec{r}_2 & \vec{t} \\
+\vdots & \vdots & \vdots
+\end{pmatrix}
+\begin{pmatrix}
+x \\ y \\ 1
+\end{pmatrix}_{chessboard}
+\end{equation}
+Collecting the matrices into a single homography matrix for a particular view (source and destination pair) gives:
+\begin{equation}
+\vec{p}_{dest} = \mathbf{H} \vec{p}_{source}
+\end{equation}
+By collecting many points in a particular view, a best-fit $\mathbf{\hat{H}}$ can be found that minimizes the back projection error $\sum \|\vec{p}_{dest}-\mathbf{\hat{H}}\vec{p}_{source} \|$. Open source camera calibration routines then use numerically determined $\mathbf{\hat{H}}$ for many views, and the constraints of orthonormality to obtain camera intrinsics, as well as extrinsic parameters for each particular view \cite{Bradski:2008}.  
+
+\section{Correcting for distortion}
+Distortion from cheap lenses and short focal lengths is expected to be large.  It is possible to run the calibration ignoring distortion, then solve for distortion parameters and iterate until convergence \cite{Bradski:2008}. Radial distortion arises from the lens and is given by:
+\begin{equation}
+x_{corr} = x (1+k_1 r^2 + k_2 r^4 + k_3 r^6)
+\end{equation}
+\begin{equation}
+y_{corr} = y (1+k_1 r^2 + k_2 r^4 + k_3 r^6)
+\end{equation}
+Tangential distortion arises from skewed mounting of the sensor and is given by: 
+\begin{equation}
+x_{corr} = x + [2 p_1 y + p_2 (r^2 + 2 x^2)]
+\end{equation}
+\begin{equation}
+y_{corr} = y + [p_1 (r^2 + 2 y^2) + 2 p_2 x]
+\end{equation}
+
+\section{Completing the calibration}
+The equations given so far are combined in the OpenCV routine \texttt{cvCalibrateCamera2()}, which allows solving for a single camera's intrinsic and distortion parameters and the extrinsic rotation and translation associated with each view used.  The next step is to combine information from multiple cameras.  While most computer vision texts focus on stereo vision applications and use of epipolar geometry and fundamental matrices \cite{Bradski:2008}, we are more concerned with more than two cameras, in arbitrary arrangements that make such approaches non-intuitive.  The stereo vision application is also optimized somewhat for speed (by reducing search dimensionality using epipolars); while here we wish to search in 3D and find the most accurate positions possible. 
+
+From the single camera calibration, we have an initial guess of the position of the cameras relative to one another.  However, we have a lot of extra parameters since the calibration shape is the same in all views.  The next step is to re-run the calibration with some of these extra parameters fixed.  How the heck do we do that? We sort of have to break into the calibration routine and recast the objective function... I suppose I could run pairwise stereo calibrations with the zero camera. 
+
+\section{Locating points}
+Once we have the calibrations, we take the approach of \cite{Munk:2011} to find 3D positions from multiple 2D images.  To accomplish this, we assume a position and minimize the squared projection error in all images:
+\begin{equation}
+\hat{x}_{world} = 
+\argmin V
+\end{equation}
+\begin{equation}
+V =
+\sum_{all\ cameras} 
+\| \vec{x} - s \mathbf{M} 
+\begin{bmatrix}
+\mathbf{R} & \vec{t}
+\end{bmatrix}
+\hat{x}_{world}
+\|
+\end{equation}
+where $s$, $\mathbf{M}$, $\mathbf{R}$, and $\vec{t}$ were all obtained from the calibration step. 
+
+
+% use section* for acknowledgement
+\section*{Acknowledgment}
+I thank Yonatan Munk for his assistance in implementing these improved methods.  I also thank the Berkeley Center for Integrative Biomechanics Education and Research (CIBER) for providing camera availability problems that motivated this work.  
+
+\index{camera calibration|)}
+
