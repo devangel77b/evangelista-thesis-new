@@ -1,0 +1,292 @@
+\rcsid{$Id$}
+\rcsid{$Header$}
+\rcskwsave{$Author$}
+\rcskwsave{$Date$} 
+\rcskwsave{$Revision$}
+
+\chapter{ A comparative study of maneuvering}
+\label{ch:3}
+\index{comparative study|(}
+
+%\begin{abstract}
+Aerial maneuvering was likely a pervasive force shaping the evolution of flying animals. Regardless of how aerial behaviors might have arisen, we can analyze the physical effects of structural changes on aerial maneuvering as they present themselves in fossils and along evolutionary lineages. To accomplish this, we measured the aerodynamic maneuvering characteristics of a series of models based on Mesozoic birds and avian ancestors to determine whether or not measures of aerodynamic performance correlated with morphological changes. Maneuvering characteristics during glides were quantified by measuring static stability ($\partial C/\partial\alpha$; the tendency to experience righting moments when deflected from equilibrium) and control effectiveness ($\partial C/\partial\delta$; the amount of torque or moment generated for each degree of movement of a limb or control surface).  We then mapped the results of our aerodynamic study onto a phylogenetic tree of Avialae, using \Microraptor\ (Dromaeosauridae) and \Anchiornis\ (Troodontidae) as outgroups, in order to test whether or not changes in maneuvering characteristics correlated with changes in morphology during early bird evolution. We specifically examined the performance effects of the shortening of the tail and control effectiveness of leg and tail plumage compared to that of the forelimb wing.  We also briefly examined similar trends in the pterosaurs and bats, which also appear to show reduction in tails in derived forms. Our analysis offers a biomechanical perspective to the evolution of avian flight that integrates morphological evidence from fossils with modeled performance in a phylogenetic framework.\footnote{Draft intended for submission to PLoS}
+%\end{abstract}
+
+
+
+\section{Introduction}
+This is the second part of a study of maneuvering and control in birds and bird ancestors using physical models.  In the first part of the study \cite{plos:part1}, based on the mid-Cretaceous dromeosaur \Microraptorgui\ \cite{Xu:2003}, we found that changes in planform, such as the presence or absence of a feathered tail or of leg feathers or the reconstructed posture of the animal, can drastically alter static stability. In addition, appendage function (e.g.\ as an elevator, rudder, or aileron, generating control forces and torques in different directions) also depends on posture and glide angle, and the function of appendages can shift dramatically due to reversal or cross-coupling effects.
+
+Fill in more introduction here... 
+%Introduction here.  The origins of vertebrate flight have been hotly debated for a long time... (ground up versus trees down is old way to frame it and kind of false dichotomy).  Wing-assisted incline running in vertebrates, as an intermediate development of the flight stroke necessary to power flight, has received much attention recently.  Consideration of the use of the wings in vertical behaviors is useful, but proponents focus too much on it as a veiled ``ground up'' argument.  This is propped up by phylogenetic arguments that trace the origin of three traits deemed ``necessary'' for flight by specious analogy to airplanes:  (1) a fast metabolism - an ``engine'' (2) an airfoil - ''wing'' and (3) a flight stroke - ''propeller'' (Padian 200x).  Say nicer: Padian dumped on Bock for arbitrarily picking a sequence; he is as guilty of this by arbitrarily picking 3 functions that aren't right. 
+%
+%	On the other hand, maneuvering and the production of left-right asymmetries appears very important in the evolution of flight in insects (add citations).  Ongoing studies of ants (Munk 200x) and stick insects (Zeng 200x) look at the consequences of body postures, winglets, etc for maneuvering or other functions (Kingsolver:1985).  Blah blah.  For a balanced biomechanical assessment of the origins of vertebrate flight, this same logic should be applied by expanding the phylogenetic arguments in (Padian 200x) to consider a different set of functions necessary for flight:  (1) stability; (2) maneuvering and (3) safety from damage on landing.  
+%	
+%	Arbitrarily defining that ``powered flight'' is a special entity and then selecting traits based on that, in the way Padian does, is not quite right because it postulates that maneuvering-related uses of traits during non-powered flight are not important.  So the difference here will be taking these into account with an open mind rather than being locked into an artificial bias that powered is different from other flight (which may be true for engined- airplanes but is not true in general for organisms - Padian being teleological?)
+
+\subsection{Quantifying maneuvering: Stability and control effectiveness}
+Recall that a body in flight at sufficiently high speed will experience aerodynamic forces (lift and drag) from the air flow around it \cite{McCormick:1995, Etkin:1996}.  The body will also feel aerodynamic torques or moments that may cause it to pitch up or down, roll to one side or the other, or yaw left or right in heading \footnote{In aerodynamics usage, roll, pitch and yaw are generally used to refer to perturbations about a particular operating point given by a body's bank, elevation, and azimuth; in the interest of not confusing a general reader, we use the more widely understood terms here.}.  The moments, which are of primary interest for this study, can be measured (see Methods) and used to quantify maneuvering ability of a shape by examining stability and control effectiveness \cite{McCormick:1995, Etkin:1996, McCay:2001, McCay:2001a, plos:part1}.  It is typical to nondimensionalize the moments, to compare primarily the effect of shape, rather than of size or speed.  For example, the pitching moment coefficient is given by
+\begin{equation}
+\mbox{pitching moment} = M = \num{0.5} C_m \rho u^2 A \lambda
+\end{equation}
+where $\rho=\SI{1.2}{\kilo\gram\per\meter\cubed}$ is the density of air, $u$ is the speed, $A$ is a characteristic area taken here as the planform area and $\lambda$ is a characteristic length taken here as the estimated snout-vent length \cite{McCay:2001, McCay:2001a, Koehl:2011}. Rolling moment coefficient $C_r$ and yawing moment coefficient $C_y$ are similarly defined.
+
+For a given shape or body in a particular posture, a stable equilibrium point is a fixed point (zero moments) in which the body feels a restoring moment when deflected away \cite{McCormick:1995, Etkin:1996, McCay:2001, McCay:2001a, plos:part1}.  To quantify stability, the moments acting on the body are measured as it is perturbed (in pitch, roll, or yaw). Stability is indicated by the slope; negative slope results in restoring moments and indicates static stability, while positive slope indicates that the moments are destabilizing \cite{McCormick:1995, Etkin:1996, McCay:2001}.  For example, in pitch, the pitching stability coefficient is given by 
+\begin{equation}
+\mbox{pitching stability coefficient} =
+C_{m,\alpha} = \frac{\partial C_m}{\partial \alpha}
+\end{equation}
+where $\alpha$ is the angle of attack.  Stability for roll ($C_{r,\phi} = \partial C_r / \partial \phi$) and yaw ($C_{y,\psi} = \partial C_y / \partial \psi$) are similarly evaluated. As a simple example, consider the case of a sphere versus a weather vane, shown in Figure~\ref{fig:sphere}.  The symmetrical sphere feels no restoring moments and is marginally stable, while the weather vane is stable near zero.  A backwards weathervane would show positive slope indicating instability.  A weathervane with larger tail feathers would show a greater slope, indicating larger restoring torques felt for a given deflection.   
+\begin{figure}[!ht]
+\begin{center}
+%\includegraphics[width=4in]{figures/example-aero-data/sphere-weathervane.pdf}
+\end{center}
+\caption{
+{ Stability of a sphere versus a weathervane.}  Ain't it pretty? Need to add lines and annotations and clean up this figure per Yonatan's suggestions. Change this to nondimensional coefficients too.}
+\label{fig:sphere}
+\end{figure}
+
+Just as stability can be quantified by wiggling the position of the entire body, the control effectiveness of a particular appendage or body movement can be examined by wiggling the appendage, to measure the change in moments as the appendage moves.  In aeronautical engineering, the control effectiveness measured in this way might be used to understand how much yawing torque is exerted on an airframe for every degree of rudder deflection, for example: $C_{y,\delta} = \partial C_y / \partial \delta$.  For this study, we examine the change in aerodynamic torques for small movements of the wings, legs or tail. A graphical example for the effect of tail dorso-flexion on pitch in \Microraptor\ is given in Figure~\ref{fig:microraptor-tail-example}, from \cite{Tisbe:2011, Koehl:2011}.  As the tail is deflected upwards \ang{15} the body feels a nose-up pitching moment, while deflecting the tail downwards \ang{15} results in a nose-down pitching moment; this fits with intuition and experience with toy gliders.   
+\begin{figure}[!ht]
+\begin{center}
+%\includegraphics[width=4in]{figures/example-aero-data/microraptor-Cm-vs-aoa.pdf}
+\end{center}
+\caption{
+{ Example of control effectiveness of tail deflection in \Microraptor.}  From \cite{Tisbe:2011, Koehl:2011}. As the tail is deflected upwards the body feels a nose-up pitching moment, while deflecting the tail downwards results in a nose-down pitching moment.  Equivalently, tail movement shifts the stable equilibrium point to higher or lower angle of attack, respectively.  Shrink and combine with Figure 1? }
+\label{fig:microraptor-tail-example}
+\end{figure}
+
+Maneuvering ability is determined by the combination of stability and control-effectiveness.  A biomechanical tradeoff is inherent here; a highly stable object can resist perturbations (from disturbances in the air, impacts or collisions) with minimal control effort, but it will also have difficulty in changing direction (to right or direct its descent to safe landing areas, resources of interest, or to maneuver away from predators).  Locomotion is a complex task and passive stability is often exploited to reduce control effort \cite{someone}; conversely, passive instability is often exploited in extreme (and likely selective) maneuvers when organisms are possess enough actuator and brain to provide closed-loop control around the unstable system \cite{someone}.  It is instructive to examine the evolution of both, within a phylogenetic context, using comparative methods. 
+
+\subsection{Examining patterns in evolution of maneuvering using phylogenetic comparative methods} 
+To examine patterns in the evoltiuon of maneuvering, we examined how morphological characters and performance change during the evolution of the Avialae (\Archaeopteryx\ and descendants, source for name \cite{someone}).  The phylogeny (Figure~\ref{fig:phylogeny}) used was assembled from \cite{Zhou:2010, Li:2010, OConnor:2011} (strict consensus? parsimony for $n$ morphological traits) for extinct taxa and \cite{Cracraft:2004} for four extant birds used in the comparison. Two outgroups (\Anchiornis\ \cite{Hu:2009} and \Microraptor\ \cite{Xu:2003}) were also included in the analysis.  Mapping stability, control effectiveness, and morphological traits onto the tree allows examination of patterns in the evolution of maneuvering, as well as testing... other stuff. 
+\begin{figure}[!ht]
+\begin{center}
+%\includegraphics[width=0.75\columnwidth]{figures/phylogeny/just-tree.pdf}
+\end{center}
+\caption{{ Phylogeny of the Avialae, after \cite{Zhou:2010, Li:2010, OConnor:2011, Cracraft:2004}.}  Assembled based on... some assumptions that should be listed here.  Currently drawn for landscape on a screen; redraw version of this for portrait orientation in a paper.}
+\label{fig:phylogeny}
+\end{figure}
+
+Fill in more about what comparative methods were used here... first we map the discrete characters onto Figure~\ref{fig:phylogeny} using parsimony.  Then we carry out a few different continuous trait analyses too, which are... ??? 
+
+
+
+
+
+% You may title this section "Methods" or "Models". 
+% "Models" is not a valid title for PLoS ONE authors. However, PLoS ONE
+% authors may use "Analysis" 
+\section{Materials and Methods}
+\label{sec:methods}
+Forces and torques were measured on specially constructed physical models in a wind tunnel using methods identical to \cite{plos:part1}, which describes the general methods used.  
+
+\subsection{Models}
+\label{sec:methods:models}
+To compare maneuvering as morphology changes during the evolution of the clade, we created physical models (\SI{8}{\centi\meter} SVL) of four extant birds and eight theropods.  Species were selected to sample available phylogenies; fossils were also selected to provide reasonable support for relative limb and body proportion and wing and tail feather planform. Table~\ref{tab:taxatested} gives the source fossils and references used in construction. In addition to the models discussed here, we created models of three pterosaurs, two bats, and two artificial shapes for checking calibration and to explore parallel evolution.  
+
+Fossil theropods were reconstructed in a position with the wings spread and the legs extended back \cite{Nova}. Completed models are shown in Figure~\ref{fig:models} and summarized in Table~\ref{tab:modelgeom}.
+%\input{tables/taxatested} % Table of source fossils
+%\input{tables/modelgeom} % Table of model geometry
+
+\subsection{Aerodynamic measurements}
+\label{sec:methods:measurements}
+As in \cite{plos:part1}, wind tunnel tests were conducted with a six-axis force and torque sensor (Nano17, ATI Industrial Automation, Apex, NC).  The sensor was mounted to a \SI{0.5}{inch} (\SI{1.27e-2}{\meter}) aluminum sting damped with rubber. The force sensor and sting exited the models at mid-torso, at approximately the center of mass, on the right side (for pitch measurements), dorsally (for yaw measurements) and posteriorly (for roll measurements).  In some measurements, use of a \SI{2}{\milli\meter} steel extension rod was necessary to avoid interferences between the model and sensor.  As in other studies \cite{Munk:2011}, these were accounted for using the sensor's built in tool transformation to calculate the effective torques at the body given known sensor displacements. 
+
+Wind tunnel tests were conducted as in \cite{plos:part1}, primarily at \SI{6}{\meter\per\second} resulting in a Reynolds number of around \num{32000}.  The $\mbox{Re}$ here corresponds to full-scale \Archaeopteryx, however we do not anticipate major scale effects.  In this regime and at high angles of attack, the aerodynamic constants of interest are reasonably constant with $\mbox{Re}$ \cite{Koehl:2011}. 
+
+Force transducer readings were recorded at \SI{1000}{\hertz} sampling frequency using a data acquisition card (PCI-6251, National Instruments, Austin, TX), as in \cite{plos:part1}.  In these experiments, the sting was mounted to a standard-size digital servo modified for \ang{180} operation (HS-5485HB, Hitec USA, Poway, CA) and interfaced to the data acquisition computer via a specially constructed interface box based on an Arduino microcontroller (SparkFun, Boulder, CO) using specially written code in Python.  This allowed the computer to automatically position the sting, zero the sensor, control wind tunnel speed, and take measurements.  As in \cite{plos:part1}, raw measurements were rotated from a frame fixed to the model to one aligned with the wind tunnel and flow using the sting angle. 
+
+Using the automated sting, we obtained 13,792 points for 247 positions (86 pitch, 69 roll, 92 yaw).  The positions focused on static stability in pitch, roll, and yaw; control effectiveness of symmetric wing, leg, and tail movements; and control effectiveness of asymmetric wing and tail movements. 
+
+%\subsection{Phylogenetic comparative methods}
+%Do Padian's thing but with a revised set of maneuvering-based ``requirements'' for flight.   Specifically, take phylogenies published by phylogeny guys and map onto them (1) aerial righting reflexes; (2) directed aerial descent; (3) stability and maneuverability metrics and (4) safety from damage using ancestral state reconstruction to compare the timing and sequence of changes in these to the timing and sequence of those traits addressed in Padian's work. 
+%\subsection{Broader ad hoc comparisons}
+%Outside of a phylogenetic context, do a revised Bockian-thing considering broad support for maneuvers as a sort of Bayesian proof... so that from both a strict phylogenetic standpoint and from a broader total-evidence consideration things tell a consistent story.  What I am getting at is that if there are 30+ independent originations of gliding... it seems reasonable to ask that a scenario for the evolution of flight that does not include gliding would need to add some extra in order to convince... 
+
+
+\subsection{Phylogenetic comparative methods}
+\label{sec:methods:phylo}
+A Nexus file without branch lengths was prepared representing the topology of trees assembled from (references) and shown in Figure~\ref{fig:phylogeny}. Mapping of the discrete maneuvering traits (supplemental material file X) was performed in Mesquite (reference) using (routine). 
+
+Additional analyses were carried out in R (reference) using the \texttt{ape} library (reference) to examine (STUFF).  
+
+Continuous analyses did (STUFF).  
+
+\subsection{Testing correlation}
+tip shuffles to test for phylogenetic signal in patterns seen - lack of pattern would suggest convergence because of dominant physical or biomechanical factors.  Need citations for this method. \cite{Pagel:1999}
+
+\subsection{Ancestral state reconstruction with linear parsimony?}
+ancestral state reconstruction to get at the sequence of various changes and guess at the sequence of selective physical factors.  Need citations for this method. 
+%These are the same thing Padian was arguing but with a more informed choice of characters and should give a more convincing answer.  
+
+
+
+
+
+
+% Results and Discussion can be combined.
+\section{Results}
+\subsection{Aerodynamic measurements}
+Typical data for a series is given in Figures~\ref{fig:exampleall}-\ref{fig:example}.  Figure~\ref{fig:example} also illustrates how stability and equilibrium point are read from a given run.  The results for all runs are summarized in the tables below. 
+\begin{figure}[!ht]
+\begin{center}
+%\includegraphics[width=6in]{figures/example-pitch/all-pitch.pdf}
+\end{center}
+\caption{
+{ Example raw aerodynamic measurements.}  All pitch data.  Not sure best way to present this.  Probably best to omit this, give a few examples and the summary tables and trees. Old plot file - may have bugs.    
+}
+\label{fig:exampleall}
+\end{figure}
+\begin{figure}[!ht]
+\begin{center}
+%\includegraphics[width=6in]{figures/example-pitch/wings-by-sp.pdf}
+\end{center}
+\caption{
+{ Example raw aerodynamic measurements.}  All wing control effectiveness runs.  Not sure best way to present this.  Probably best to omit this, give a few examples and the summary tables and trees. Old plot file - may have bugs.    
+}
+\label{fig:exampleall}
+\end{figure}
+\begin{figure}[!ht]
+\begin{center}
+A%\includegraphics[width=3in]{figures/example-pitch/longtailsummary.pdf}
+B%\includegraphics[width=3in]{figures/example-pitch/shorttailsummary.pdf}
+\end{center}
+\caption{
+{ Example raw aerodynamic measurements.}  Long-tailed taxa in A, short-tailed taxa in B.  Square shows straight tail, upward triangle \ang{15} tail up, downward triangle \ang{15} tail down. Long-tailed taxa have a stable equilibrium point at \num{10}-\ang{25}, and the tail is effective at low angles of attack.  Short-tailed taxa have an unstable equilibrium point at \num{0}-\ang{5} and the tail is ineffective at low angles of attack.   
+}
+\label{fig:example}
+\end{figure}
+
+Pitch stability data for all runs and models are given in Table~\ref{tab:pitchstability}.  Control effectiveness in pitch of tail dorso-flexion and symmetric wing protraction are given in Tables~\ref{tab:pitchtail} and \ref{tab:pitchwings}.
+%\input{tables/pitch-stability.tex}
+%\input{tables/pitch-tail.tex}
+%\input{tables/pitch-wings.tex}
+
+Roll stability data for all runs and models are given in Table~\ref{tab:rollstability}. Control effectiveness in roll of asymmetric wing tucking is given in Table~\ref{tab:rollwings}.
+%\input{tables/roll-stability.tex}
+%\input{tables/roll-wings.tex}
+
+Yaw stability data for all runs and models are given in Table~\ref{tab:yawstability}. Control effectiveness in yaw of tail lateral movement and asymmetric wing pronation/supination is given in Tables~\ref{tab:yawtail} and \ref{tab:yawwings}.
+%\input{tables/yaw-stability.tex}
+%\input{tables/yaw-tail.tex}
+%\input{tables/yaw-wings.tex}
+%\input{tables/yaw-head.tex}
+
+The aerodynamic measurements are coded into two character matrices included in the supplemental materials.  The first character matrix gives discretized (stable, marginal, unstable) values for each taxa.  The second character matrix gives the continuous character states based on the mean values reported here.  
+
+
+
+\subsection{Mapping onto trees}
+Mapping of the discrete character states onto the phylogeny of Figure~\ref{fig:phylogeny} gives the results in Figures~\ref{fig:pitchstabeq}-\ref{fig:pitchall}. Potentially I have a lot of these too, so summary figures like Figure~\ref{fig:pitchall} may be the way to go here.  
+\begin{figure}[!ht]
+\begin{center}
+%\includegraphics[width=4in]{figures/pitch-mapping/pitch-stab-eq.pdf}
+\end{center}
+\caption{%
+{ Pitch stability at equilibrium changes within the tree.}  Long-tailed taxa are stable in pitch at equilibrium; short-tailed taxa are not.
+}
+\label{fig:pitchstabeq}
+\end{figure}
+\begin{figure}[!ht]
+\begin{center}
+%\includegraphics[width=4in]{figures/pitch-mapping/pitch-tail-eq.pdf}
+\end{center}
+\caption{%
+{ Control effectiveness of the tail changes within the tree.}  Long-tailed taxa have large tail control effectiveness; short-tailed taxa do not.
+}
+\label{fig:pitchtaileq}
+\end{figure}
+\begin{figure}[!ht]
+\begin{center}
+%\includegraphics[width=4in]{figures/pitch-mapping/pitch-wing-15.pdf}
+\end{center}
+\caption{%
+{ Control effectiveness of symmetric wing protration changes within the tree} Wing control effectiveness increases in later taxa.
+}
+\label{fig:pitchwing15}
+\end{figure}
+\begin{figure}[!ht]
+\begin{center}
+%\includegraphics[width=4in]{figures/pitch-mapping/pitch-all.pdf}
+\end{center}
+\caption{%
+{ Evolution of pitch maneuvering within the tree.}  Consilence between three traits (pitch stability, tail control effectiveness, and wing control effectiveness). Early in the tree, taxa are stable and with some amount of tail control effectiveness.  Later in the tree, taxa are unstable and control effectiveness has been lost in the short tails.  However, it has migrated to the wings.
+}
+\label{fig:pitchall}
+\end{figure}
+
+For continuous characters, may have plots of those? 
+
+\subsection{Other comparative tests}
+Need to beef this up. Independent contrasts?  Pagel's tests for correlation?  Plot trait grams? 
+
+
+
+
+
+
+
+
+
+\section{Discussion}
+\subsection{Observed trends}
+Morphologically, the clade shows progressive tail loss as well as loss of leg-associated control surfaces along with a concomitant increase in forward wing size and bony features associated with the pectoral girdle.  While traditionally these are assumed to be related to generation of a power stroke (citation), an alternative explanation may be that they are related to improvements in fine control. 
+
+Functionally, the models show shifts in stability (from ancestrally stable to unstable in derived taxa).  Control effectiveness also appears to migrate from ancestral large and feathered after surfaces (tail and legs) to the wings, which become larger in derived taxa.   
+
+\subsection{Inconsistencies with WAIR}
+WAIR proponents have posited that control comes later, that a WAIR-capable wing stroke provided power only (need source!).  Our findings are inconsistent with this; the wing control effectiveness is comparatively small in ancestral taxa given their stability and large tail control effectiveness.  This is further supported by stiffness of feathers (cite Nudds and Dyke) and (other stuff). 
+
+\subsection{What is this consistent with}
+Our findings are more consistent with a maneuvering based hypotheses (cite Dudley SICB 2011). Early in the clade, the tail posesses large aerodynamic control effectiveness and the body posesses some degree of stability.  Combined with likely dynamic forces and torques generated by tail whipping (cite full) or flapping (cite dudley), this suggests that the ancestral organisms were very capable of righting or directed aerial descent.  
+
+Coefficient trends with AOA (as proxy for glide angle) further support this.  Describe them here... early on the control system functions well at high angles of attack expected during flight at steep glide angles.  Later, the shifts in control system function are consistent with lower glide angles (also predicted by L/D ratios not presented here).  (and also consistent with baby bird stuff, in prepartion).
+
+\subsection{Does the same story hold in other taxa?}
+The same trends hold in the three pterosaur models we tested, which also exhibit long tails in ancestral forms (\Rhamphorynchus) shifting to shorter tails in derived forms (\Pteranodon, \Pterodactylus).  
+
+The trends observed here dod not appear strongly in our bat models, probably because the earliest bat (\Onychonycteris) is mostly a modern bat with only a slightly long tail, within tail lengths seen in other extant bats.  The fossil record of bats does not provide a sufficiently transitional form to perform the tests we used here, however others have noted the same sequence in baby bats (cite Padian?)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% Do NOT remove this, even if you are not including acknowledgments
+\section{Acknowledgments}
+We thank the following for their assistance: Griselda Cardona, Chang Chun, Michael Cohen, Vincent Howard, Shyam Jaini, Austin Kwong, Felicia Linn, Alex Lowenstein, Divya Manohara, Dylan Marks, Neil Ray, Francis Wong, Karen Yang, Olivia Yu, and Richard Zhu. This research was done through the Berkeley Undergraduate Research Apprentice Program (URAP).  D.\ Evangelista was supported by an NSF IGERT. T.\ Huynh was supported by the University of California Museum of Paleontology (UCMP).  We also thank Robert Dudley for use of his wind tunnel, Tom Libby and the Berkeley Center for Integrative Biomechanics in Education and Research (CIBER) for use of a force sensor and 3D printer.
+
+
+\index{comparative study|)}
+
+%\bibliography{references/plos}
+% copy all citations from this to main bibliography
+
+

@@ -1,0 +1,484 @@
+\rcsid{$Id$}
+\rcsid{$Header$}
+\rcskwsave{$Author$}
+\rcskwsave{$Date$} 
+\rcskwsave{$Revision$}
+
+\chapter{Disturbance forces and sensitivity of simple and biological shapes to turbulent incident air velocities }
+\label{ch:4}
+\index{turbulence sensitivity|(}
+
+%\begin{abstract}
+Airborne objects (animals, plants, and vehicles) flying in real environments experience disturbances from turbulence in the air they are flying through.  The shape of an object and its size relative to turbulent eddies should affect the magnitudes and frequencies of the disturbances felt, in other words, the sensitivity to turbulence.  To test this, we quantified the sensitivity of simple two- and three-dimensional models to turbulent incident air velocity using simultaneous measurements of forces and torques and air velocities in a wind tunnel. Preliminary results compare well with theoretical predictions of the disturbances an airborne organism of a given shape might experience in a particular environment.  We also found good general agreement between simplified geometric shapes and 2D animal planforms of equivalent aspect ratio.  Elongated shapes with low aspect ratio are better filters of turbulent noise, while high aspect ratio shapes experience more of the turbulence.  This may have important consequences for maneuvering and noise pickup from a turbulent environment as body plans evolve.
+%\end{abstract}
+
+\section{Introduction}
+%JFM likes citations in \citep{Feitl:2010, Reynolds:2010} format, text citations are also OK as in \citet{Webb:2010}.
+Consider the case of an airborne object translating through the air.  In most real environments, the air is not perfectly still but instead has some velocity that can vary in time and space.  The variation is often due to turbulence, i.e. blobs of vorticity that advect, diffuse, and stretch in complicated and unpredictable ways \cite{Tennekes:1972,Davidson:2004}.  We can go outdoors on windy days and experience this: a light breeze, or heavy gusts, for example. 
+
+Turbulent eddies have length and time scales associated with the swirling fluid they contain \cite{Tennekes:1972,Davidson:2004}.  The eddies in a cup of tea are on the scale of millimeters, while larger scale eddies may be of the size of entire weather systems.  How an airborne object experiences the turbulence should depend on size.  For example, consider an Airbus and a bee.  When experiencing large eddies around the size of the Airbus, the crew and passengers experience disturbance forces and torques, and as a consequence are asked to remain seated with seatbelts fastened.  When eddies of such large size are experienced by the bee, the bee feels slow, uniform disturbances.  Eddies the size of the bee are simply not felt by the passengers on the Airbus because they average out over the large size of the airframe. The eddies also give rise to a cascade of energy from large eddies to smaller eddies and down \cite{Davidson:2004, someone}; the cascade will also play a role in understanding size effects. 
+
+The size and shape of the object should alter which eddies are able to exert forces and the magnitude of the forces (Fig~\ref{fig:cartoon}), which for a flying or swimming animal or robot represent force and torque disturbances which must be controlled or damped in order to remain on course.  To our knowledge we know of no widely accepted method to quantify this, so we developed the methods described herein.  First, we describe an empirical method in which we correlate force recordings from a stiff six degree-of-freedom (\sixDOF) force/torque sensor with recordings of the turbulent velocity from a sonic anemometer.  We then compare this to theory based on consider spatial filtering of the eddies. 
+
+\begin{figure} 
+%\centerline{\includegraphics[width=0.2\textwidth]{figures/cartoon/DSC_0903.jpg}}%
+\caption{Cartoon goes here. After \citep{McCay:2003}. Need cute picture and drawings of small and large eddies.  Kind of like the frog picture but different and better.}
+\label{fig:cartoon}
+\end{figure}
+
+
+%Aside from size, we may also wonder if the shape of the object affects how much of the turbulent environment it ``feels''.  For many ``large'' objects, such as flying animals or aircraft, shape can have drastic consequences for lift, drag, stability, and control effectiveness, and animal studies have characterized some of the overall body kinematic effects of turbulence on ``large'' animals such as fish \cite{Feitl:2010, Tritico:2010, Pavlov:2009, Lupandin:2005}, flying frogs \cite{McCay:2003, McCay:2004}, orchid bees \cite{Combes:2009}, and hummingbirds \cite{Ortega:2012x}.  On the other hand, for aircraft, such effects are usually ignored completely, and typical specifications will require analysis of uniform changes in wind using baseline control models of the entire aircraft \cite{milspec} -- in essence, the aircraft is a point and the entire wind changes instantaneously; an Airbus is treated as a bee.  It is reasonable to wonder if there is a more precise way to consider shape, and if there are shapes or postures that are more or less sensitive to environmental turbulence. 
+
+\subsection{Relevance of turbulence to biological processes and animal flight}
+Turbulence is of critical importance to many biological processes.  Turbulence enhances mixing and transport phenomena that are vital to nutrient exchange, respiration, etc.  Turbulence can affect dispersal of seeds, gametes, propagules, or organisms both in water and in air.  (add citations).  In the case of flying organisms, turbulence is of biological interest in two ways.  The sensitivity of an animal or plant shape to incident eddies could affect its dispersal distance, its ability to navigate, or provide limits on conditions during which it cannot fly (e.g. birds in severe storms) or during which dispersal might be ``optimal'' (e.g. plants releasing aerial propagules on gusty days).  Add citations later \citep{Denny:1998, Feitl:2010, McCay:2003, Pavlov:2009, Webb:2010, Reynolds:2010, Lupandin:2005}. 
+
+Another consideration is the evolution of flight itself.  If we consider the role of maneuvering and flight control throughout the evolution of animal flight (cite Dudley, others, myself), the nature of disturbances becomes of key importance.  Maneuvering refers to the ability of a gliding animal to change its flight path, which is important for safely navigating to a given destination, avoiding obstacles and evading predators, and may be important for impressing potential mates (citations).  Animal studies have characterized some of the overall body kinematic effects of turbulence on ``large'' animals such as fish \citep{Feitl:2010, Tritico:2010, Pavlov:2009, Lupandin:2005}, flying frogs \cite{McCay:2003, McCay:2004}, orchid bees \citep{Combes:2009}, and hummingbirds \citep{Ortega:2012x}. Maneuvering and flight control may make use of passive stability (citations) as afforded by posture, or it may use of static and dynamic asymmetries to effect turns, rolls, and righting (citations); and it is reasonably straightforward to measure both stability and control effectiveness, for example in model tests with perturbations in attitude and body position (citations).  These address two of the key aspects (and a major tradeoff) of any flight control system \citep{McCormick:1976}; stability means an organism is able to resist perturbations (perhaps with reduced requirements for active control from a complicated nervous system), while control effectiveness means body motions can generate the necessary forces and torques; the tradeoff is balancing ease of control with speed of response.  
+
+A third major part of a classical control system, the sensitivity of the system to external environmental noise, is what we seek to address quantiatively here.  In this context, the environmental noise incident on an organism consists of eddies.  An organism may simply accept the resulting disturbance forces, opt not to fly, or alter body position or behavior to ameliorate the disturbance.  For example, orchid bees in high turbulence are known to extend their hind legs \citep{Combes:2009}; while hummingbirds in turbulence are able to compensate to a point, beyond which major alterations in body kinematics are observed \citep{Ortega:2012x}.  In water, eddies of certain sizes may be exploited to save energy (cite Triantafyllou), or may reduce the effectiveness of forward swimming \citep{Webb:2010}.  A general theoretical framework is needed as a null hypothesis here: what are the broad patterns of sensitivity versus body size or shape?  
+
+\subsection{Two engineering methods for identifying sensitivity to incident eddies}
+To answer the biological questions, we must use or expand engineering methods.  Two ways to identify the patterns of sensitivity versus shape and size are to empirically measure it or to model it.  The empirical measurement is obtained using a series of model tests to systematically vary shape (in this case, aspect ratio) and relative size of the model to the eddies (here taken as the size of an upstream cylinder initiating the eddies). This is described below.  Need to expand this section by reviewing some previous literature  \citep{Fox:2010, Marmarelis:1977, Marmarelis:1993}.
+
+%On the other hand, for aircraft, such effects are usually ignored completely, and typical specifications will require analysis of uniform changes in wind using baseline control models of the entire aircraft \cite{milspec} -- in essence, the aircraft is a point and the entire wind changes instantaneously; an Airbus is treated as a bee.  It is reasonable to wonder if there is a more precise way to consider shape, and if there are shapes or postures that are more or less sensitive to environmental turbulence.
+
+Typical design guidelines \citep{navair:1996} ignore size and shape dependence and instead prescribe a given level of disturbance (aircraft is a point, entire wind changes instantaneously, and an Airbus is a bee), which is not helpful for our biological questions. The spatial filtering alluded to in Fig~\ref{fig:cartoon} immediately suggests a a more precise way to consider shape and size. If we treat the turbulence as a stationary stochastic process with a distribution chosen to match typical turbulence cascade models, we can examine the effect of spatial filtering computationally and compare it to our empirical results. 
+
+
+
+
+
+
+
+
+
+\section{Methods and materials}
+
+\subsection{Models}
+%Shapes Construction
+%2D geometric shapes including circles (1:1), ellipse (1:2; 1:4), squares (1:1) and rectangles (1:2; 1:4) with same area.
+%	Designed in Illustrator 5.5
+%		-Adjust according to laser printer (model #) settings
+%	Laser cut the shapes on hardened cardboard (specified?) 
+%-Settings-- (blah blah blah)
+
+% Model data table here?
+We prepared a series of two-dimensional (2D) flat plate models consisting of rectangles of equal area (\SI{50e-4}{\meter\squared}) and varying aspect ratios (1, 2, 4, 6, and 8). Models were designed using a vector graphics program (Illustrator 5.5; Adobe Systems Inc., San Jose, CA). The models were cut out of \SI{3}{\milli\meter} acrylic stock (McMaster-Carr, Los Angeles, CA) using a laser cutter (VLS6.60; Universal Laser Systems, Scottsdale, AZ).  2D model dimensions are given in table~\ref{tab:flatmodels}. 
+
+%\input{tables/newrect.tex} %tab:flatmodels
+
+To check for three-dimensional (3D) effects, a series of 3D ellipsoidal models was also constructed using the same aspect ratios (1, 2, 4, 6, and 8).  The three-dimensional models were based on a standard table tennis ball (\SI{40}{\milli\meter} diameter), stretched to preserve planform area.  Two models were also designed to preserve frontal area.  3D models were designed using a solid modeling program (Solidworks; Dassault Systems, Waltham, MA) to prepare stereolithography (STL) files, which were then output to a 3D printer (ProJet HD 3000; 3D Systems Corp., Rock Hill, SC) printing in acrylic. 3D model dimensions are given in table~\ref{tab:3dmodels}.
+
+\begin{figure}
+%\centerline{\includegraphics[width=0.5\textwidth]{figures/setup/DSC_0663.jpg}\includegraphics[width=0.5\textwidth]{figures/setup/DSC_0580.jpg}}
+\caption{A. Flat plate and ellipsoidal physical models used during testing. B. Example test setup.  Replace with drawing. Tables can go in backup material.  Need pictures of bio models.}
+\end{figure}
+
+%\input{tables/solids.tex}%tab:3dmodels
+
+To examine a simple case of biologically relevant geometries, two Avialae (sea gull (\Larus)  and the Jurassic feathered dinosaur \Anchiornis), and three teleost fish (salmon (\Oncorhynchus), butterflyfish (\Chaetodon), and seahorse (\Hippocampus)) were designed using methods identical to the 2D models.  \Larus\ and \Anchiornis\ were chosen to examine the effect of tail reduction during the evolution of flying vertebrates.  The fish were chosen to examine the effect of an ancestral morphology (\Oncorhynchus) versus two extremely derived modified body forms (\Chaetodon\ and \Hippocampus). 2D biological model dimensions are given in table~\ref{tab:flatbiomodels}. 
+
+%\input{tables/bios.tex}%tab:flatbiomodels
+
+\subsection{Generation of a turbulent incident flow}
+Models were placed in the \SI{1x1x1}{\meter} working section of a Eiffel-type wind tunnel (Engineering Laboratory Design, Lake City, MN) and subjected to turbulent flow in the wake of an upstream obstruction. The time-averaged airspeed in the wind tunnel ranged from 0 to approximately \SI{7}{\meter\per\second}.  Two types of obstruction were used to simulate biologically relevant situations: a cylinder (simulating a branch or other structure) or a screen (simulating leafy cover or other porous obstruction).  
+
+%Turbulent flow was simulated using a horizontal wind tunnel set up with a specified wind speed (in \SI{}{\hertz}). A table tennis ball was used to model a spherical airborne object. We designed and constructed the chamber that simulated the environment, shown in Figure 2 with manual machining of four acrylic plates. The ping pong was mounted on to a stiff \sixDOF\ force torque sensor in order to measure force experienced by the sphere within the eddy currents. The \sixDOF\ force torque sensor was in turn mounted onto the acrylic plate (with drilled holes). The air flow within the chamber is measured using a hot-wire anemometer located equidistant from one side of the acrylic plate as the sphere from the other side plate. A rod is also placed vertically on the sagittal plane of the wind tunnel to simulate a tree branch in front of, but at an angle of the flying object.  The hot-wire anemometer, tree branch and sphere would form an isosceles triangle from a top view, as shown in Fig 1. 
+
+Cylinders were placed \SI{10e-2}{\meter} upstream of the model leading edge.  Cylinders were vertical sections of pipe in one of three sizes: large (3-inch schedule 40, OD \SI{88.9e-3}{\meter}), medium (3/4-inch schedule 40, OD \SI{26.7e-4}{\meter}) and small (1/2-inch schedule 40, OD \SI{21.3e-3}{\meter}).  %Except for ping pong (pong1) runs which had a \SI{38.1e-3}{\meter} cylinder made from a piece of discarded pole vault pole.  
+At the airspeeds used in this experiment, vortex shedding frequencies from the \vonKarman\ instability are expected to be in the range \SIrange{0}{}{\hertz} for the large cylinder. Cylinders were identical to those used in other studies of hummingbirds in turbulence (cite Ortega et al). 
+
+Screens consisted of no screen, coarse (1/4-inch \SI{6.35e-3}{\meter} spacing), fine (1/16-inch \SI{1.69e-3}{\meter} spacing), and middle (1/8-inch \SI{3.18e-3}{\meter} spacing). Coarse and middle screens also had a 1/16-inch smaller mesh stretched across the left side of the tunnel to generate turbulence via Helmholtz-Kelvin instability.  
+
+\subsection{Measurement of forces and velocities}
+A six degree-of-freedom (6DOF) force and torque sensor (Nano17; ATI Industrial Automation, Apex, NC) provided measurements of the forces and torques acting on the model.  Sensor axes were aligned with the wind tunnel at the start of runs.  A data acquisition card (PCI-6251; National Instruments, Austin, TX) recorded sensor readings at a sample rate of \SI{10000}{\hertz}.  The sensor was zeroed immediately before each measurement.  To eliminate high frequency electrical noise and avoid aliasing in downstream processing, force and torque data were filtered using a 16-point moving average filter, reducing the effective sampling rate to \SI{625}{\hertz}.  
+
+A three-axis ultrasonic anemometer (Model 81000, R.~M.~Young Co., Traverse City, MI) provided non-contact measurements of the streamwise and both crosswise velocities as well as ambient temperature and speed of sound to verify calibration.  Anemometer axes were aligned with the wind tunnel at the start of runs.  The sampling rate for the anemometer was \SI{32}{\hertz}. The anemometer was connected to the host computer via a serial connection.   
+
+For each combination of model, upstream obstruction, and tunnel speed, measurements were taken simultaneously during a \SI{3}{\minute} interval.  Additional measurements of velocity for each upstream obstruction at additional speeds, to further characterize the downstream flow.  
+
+\subsection{Additional velocity measurements}
+As an additional means of checking the flow and turbulence levels, we borrowed PIV data from Marta.  PIV boilerplate words here. 
+
+We also used a microphone (Blue Microphone, wherever; range \SIrange{20}{20000}{\hertz}, sampling at \SI{44.1}{\kilo\hertz}) placed within the tunnel to record a measure of velocity at frequencies higher than the anemometer was able to sample.  The power spectral density of the microphone cuts was used to check that the flow showed a turbulence cascade as expected from theory and also allowed verification of frequencies for noises within the tunnel (notably, motor noise and blade passing frequency, duct and cavity resonances associated with the tunnel itself, and inverter switching noise). 
+
+%Testing:
+%	Mount Force sensors (model) on top of each constructed shapes
+%	Place individual shapes in wind tunnel.
+%		Sonic - Young 81000
+%-Connected to com4, 38400 N81 no flow control.
+%-Anemometer is configured to give X Y Z plus speed of sound (c) and temp (Ts) and error code.
+%checked proper function using PuTTY.
+%Force - ATI Nano17
+%-Connected via convoluted DAQ setup on dev1
+%-Checked proper function using ATI DAQFT 
+%	Run with wind speed (???) for (???) minutes, # of trials
+%	Place PVC tube (diameter and length) at a distance (?) away from the testing shapes
+%	Manipulated Variable: ???
+%Simultaneously acquire wind speed, force, moment data, each in three directions (X,Y,Z).
+%Automation with Python (Data Collection)
+%	-automated to run n number of tests, etc
+%-output format?
+%	-?
+
+%The sphere and anemometer are located side by side (shown in figure 3) with same distance from the saggital line in order to create a mirror image to the tree branch. This would avoid the variation in turbulence distribute arise from the asymmetry of set up.
+
+%Both wind speed and force (three translational axes and three rotational axes) measurements are collected simultaneously through two data acquisition software; ATI force for force and moment data and MATLAB for wind speed data (with a sampling rate of \SI{625}{\hertz}). Two sizes of rod are used to model the tree branch in order to evaluate how the tree branch size can alter the turbulence sensitivity of the sphere; the wind speed data was also obtained under two directions: \ang{0} facing the direction of air flow and \ang{90}, facing the side of the chamber. Furthermore, the tests were also run under two prescribed air flow of \SI{10}{\hertz} or \SI{30}{\hertz}. A total of eight tests were run, with each test lasting \SI{10}{min} for data collection. 
+
+\subsection{System identification of turbulence sensitivity transfer function}
+Transfer functions were obtained using a Python script.  The script computed the Fourier transform of each signal using Welch's method.  Transfer functions were obtained from the ratio of the magnitudes of the Fourier transforms.  Say more later. 
+
+We examine data using both time domain and spatial domain assuming frozen turbulence. Consideration of spatial domain is important for understanding spatial filtering effects of shape.  Data are plotted against frequency as well as summed to give one-third-octave-band results. 
+
+%After force, moment and wind velocity data are collected, they are plotted in MATLAB against elapsed time. The force data were sampled at the same frequency as the wind speed data. Then we perform Fourier Transform on these two series of data in order to observe the vortex shedding frequency and the respond of force in the turbulent flow. We then perform cross-correlation between the two sets of data and find the logarithmic ratio of the two in order to obtain the empirical transfer function between them.
+%-Matlab
+%	Plot force, torque and velocity (X,Y,Z) against time 
+%	Fast Fourier Transform (FFT) applied on force, torque and velocity
+%	Calculate Vortex shedding frequency
+%		-from previous experiments?
+%	Compute transfer function
+	
+
+
+
+
+
+
+
+\section{Results}
+
+\subsection{Example raw measurements}
+Example raw measurements with time series, histogram, spectrum. PIV shots.  These show that yeah the measuring system works as expected and the turbulence obtained fits models for ``turbulence'' whatever that Russian guy is complaining about. 
+
+\begin{figure} 
+%\centerline{\includegraphics{figures/flow/example-data/fig6a.pdf}%
+%\includegraphics{figures/flow/example-data/fig6b.pdf}}
+\caption{Example data for velocity measurements axial and cross-stream (normal to model).}
+\end{figure}
+
+\begin{figure} 
+%\centerline{\includegraphics{figures/force/example-data/fig7a.pdf}%
+%\includegraphics{figures/force/example-data/fig7b.pdf}}
+\caption{Example data for force measurements axial and cross-stream (normal to model).}
+\end{figure}
+
+\begin{figure} 
+%\centerline{\includegraphics{figures/force/example-data/fig7at.pdf}%
+%\includegraphics{figures/force/example-data/fig7bt.pdf}}
+\caption{Example data for torque measurement in yaw.}
+\end{figure}
+
+\begin{figure} 
+%\centerline{\includegraphics{figures/flow/acoustic/fig8a.pdf}%
+%\includegraphics{figures/flow/acoustic/fig8b2.pdf}}
+
+%\centerline{\includegraphics{figures/flow/acoustic/fig8c.pdf}%
+%\includegraphics{figures/flow/acoustic/fig8d.pdf}}
+
+\caption{Example data for velocity measurements from anemometer (solid line) and from microphone (dotted line) showing that measured responses are consistent with what is expected for a turbulent cascade of eddies. Left plots are in frequency domain, right plots are corresponding data in wavenumber (spatial frequency) domain assuming frozen turbulence.  Upper plots are for Fourier transformed data; lower plots are for one-third-octave-band data.}
+\end{figure}
+
+
+\begin{figure} 
+\centerline{}
+\caption{PIV shot goes here.}
+\end{figure}
+
+\eject
+
+
+
+
+
+
+
+
+
+\subsection{Time-averaged forces, velocities, and overall transfer functions}
+Means, standard deviations, and covariances.Distributions of incident flow velocity. Blah. Blah bleh. 
+
+\begin{figure} 
+%\centerline{\includegraphics{figures/transfer-functions/overall/fig1.pdf}%
+%\includegraphics{figures/transfer-functions/overall/fig1nd.pdf}}
+\caption{Check of setup for time-average force and velocity.  Time-averaged (\textit{a}) drag versus speed and (\textit{b}) nondimensional drag coefficient versus Reynolds number, for flat rectangular plates with an empty screen.  Grey scale indicates model aspect ratio ($l/w$), from $\frac{1}{8}$ (dark) to \num{8} (light), indicating that shorter plates achieve fully turbulent boundary layers at relatively slower speed, thus experiencing higher drag than longer plates of the same area.}
+\label{fig:overalldrag}
+\end{figure}
+
+\begin{figure} 
+%\centerline{\includegraphics{figures/transfer-functions/overall/fig2.pdf}%
+%\includegraphics{figures/transfer-functions/overall/fig2nd.pdf}}
+\caption{Overall transfer of turbulent velocity fluctuation to disturbance force.  Root-mean-square (rms) (\textit{a}) side disturbance force versus side velocity fluctuation and (\textit{b}) nondimensional rms side disturbance force versus Reynolds number, for flat rectangular plates with upstream cylinders, size medium (circles) or small (triangles).  Grey scale indicates model aspect ratio ($l/w$), from $\frac{1}{8}$ (dark) to \num{8} (light).  At the lowest speeds, the noise floor of the force sensor dominates the signal.  However, when speed is high enough ($u'_{y,rms}>\SI{0.2}{\meter\per\second}$) to provide measurable force fluctuations, the resulting nondimensional disturbance force takes values between \num{0.1} and \num{0.5} and also exhibits dependence on aspect ratio, with shorter models experiencing higher disturbance forces. }
+\label{fig:overallfluctuations}
+\end{figure}
+
+\begin{figure} 
+%\centerline{\includegraphics{figures/transfer-functions/overall/fig2t.pdf}%
+%\includegraphics{figures/transfer-functions/overall/fig2ndt.pdf}}
+\caption{Overall transfer of turbulent velocity fluctuation to disturbance torque.  Root-mean-square (rms) (\textit{a}) yawing disturbance torque versus side velocity fluctuation and (\textit{b}) nondimensional rms yawing disturbance torque versus Reynolds number, for flat rectangular plates with upstream cylinders, size medium (circles) or small (triangles).  Grey scale indicates model aspect ratio ($l/w$), from $\frac{1}{8}$ (dark) to \num{8} (light).  At the lowest speeds, the noise floor of the force sensor dominates the signal.  However, when speed is high enough ($u'_{y,rms}>\SI{0.2}{\meter\per\second}$) to provide measurable force fluctuations, the resulting nondimensional disturbance torque shows strong dependence on aspect ratio, with shorter models experiencing lower disturbance torques. }
+\label{fig:overallfluctuations}
+\end{figure}
+
+\subsection{Spectral and one-third-octave band transfer functions}
+
+\begin{figure} 
+%\centerline{\includegraphics{figures/flow/spectra/fig3a.pdf}%
+%\includegraphics{figures/flow/spectra/fig3b.pdf}}
+%\centerline{\includegraphics{figures/flow/spectra/fig3c.pdf}%
+%\includegraphics{figures/flow/spectra/fig3d.pdf}}
+\caption{Power spectral density and one-third-octave band spectra for incident flow, upstream cylinder, medium size. (\textit{a},\textit{c}) side velocity fluctuation versus frequency (\textit{b}, \textit{d}) side velocity fluctuation versus wavenumber (assuming frozen turbulence).  Grey scale indicates motor speed... }
+\label{fig:exampleflowspectra}
+\end{figure}
+
+\begin{figure} 
+%\centerline{\includegraphics{figures/force/spectra/fig4a.pdf}%
+%\includegraphics{figures/force/spectra/fig4b.pdf}}
+%\centerline{\includegraphics{figures/force/spectra/fig4c.pdf}%
+%\includegraphics{figures/force/spectra/fig4d.pdf}}
+\caption{Power spectral density and one-third-octave band spectra for side disturbance force, upstream cylinder, medium size. (\textit{a},\textit{c}) side disturbance force versus frequency (\textit{b}, \textit{d}) side disturbance force versus wavenumber (assuming frozen turbulence).  Grey scale indicates model aspect ratio ($l/w$), from $\frac{1}{8}$ (dark) to \num{8} (light)...}
+\label{fig:exampleforcespectra}
+\end{figure}
+
+\begin{figure} 
+%\centerline{\includegraphics{figures/force/spectra/fig4at.pdf}%
+%\includegraphics{figures/force/spectra/fig4bt.pdf}}
+%\centerline{\includegraphics{figures/force/spectra/fig4ct.pdf}%
+%\includegraphics{figures/force/spectra/fig4dt.pdf}}
+\caption{Power spectral density and one-third-octave band spectra for yawing disturbance torque, upstream cylinder, medium size. (\textit{a},\textit{c}) yawing disturbance torque versus frequency (\textit{b}, \textit{d}) yawing disturbance torque versus wavenumber (assuming frozen turbulence).  Grey scale indicates model aspect ratio ($l/w$), from $\frac{1}{8}$ (dark) to \num{8} (light)...}
+\label{fig:exampleforcespectra}
+\end{figure}
+
+
+
+\subsection{Flat plates}
+Transfer functions
+
+\begin{figure} 
+%\centerline{\includegraphics{figures/transfer-functions/spectra/fig5a.pdf}%
+%\includegraphics{figures/transfer-functions/spectra/fig5b.pdf}}
+%\centerline{\includegraphics{figures/transfer-functions/spectra/fig5c.pdf}%
+%\includegraphics{figures/transfer-functions/spectra/fig5d.pdf}}
+\caption{UPDATE CAPTION - THIS IS TRANSFER FUNCTION FOR FLAT PLATE IN FORCE Power spectral density and one-third-octave band spectra for side disturbance force, upstream cylinder, medium size. (\textit{a},\textit{c}) side disturbance force versus frequency (\textit{b}, \textit{d}) side disturbance force versus wavenumber (assuming frozen turbulence).  Grey scale indicates model aspect ratio ($l/w$), from $\frac{1}{8}$ (dark) to \num{8} (light)...}
+%\label{fig:exampleforcespectra}
+\end{figure}
+
+\begin{figure} 
+%\centerline{\includegraphics{figures/transfer-functions/spectra/fig5at.pdf}%
+%\includegraphics{figures/transfer-functions/spectra/fig5bt.pdf}}
+%\centerline{\includegraphics{figures/transfer-functions/spectra/fig5ct.pdf}%
+%\includegraphics{figures/transfer-functions/spectra/fig5dt.pdf}}
+\caption{UPDATE CAPTION THIS IS TRANSFER FUNCTION FOR FLAT PLATE IN TORQUE Power spectral density and one-third-octave band spectra for yawing disturbance torque, upstream cylinder, medium size. (\textit{a},\textit{c}) yawing disturbance torque versus frequency (\textit{b}, \textit{d}) yawing disturbance torque versus wavenumber (assuming frozen turbulence).  Grey scale indicates model aspect ratio ($l/w$), from $\frac{1}{8}$ (dark) to \num{8} (light)...}
+%\label{fig:exampleforcespectra}
+\end{figure}
+
+
+
+\subsection{Biological and 3D shapes}
+Transfer functions for birds, fish, ellipsoids.  Fill in later. 
+
+\begin{figure} 
+%\centerline{\includegraphics[width=0.2\textwidth]{figures/funbox/birds-overall-med-small.pdf}%
+%\includegraphics[width=0.2\textwidth]{figures/funbox/fish-overall-med-small.pdf}}
+%\centerline{\includegraphics[width=0.2\textwidth]{figures/funbox/pongs-overall-med-small.pdf}%
+%\includegraphics[width=0.2\textwidth]{figures/funbox/pongWmed_s250.pdf}}
+\caption{Birds, fish, pong}
+%\label{fig:exampleforcespectra}
+\end{figure}
+
+% JFM example figure incantation here
+%\begin{figure} 
+%\centerline{\includegraphics[width=13cm]{figures/image.png}}
+% \centerline{\includegraphics{trapped.eps}}% Images in 100% size
+%  \centerline{\includegraphics[height=7cm,width=13cm]{modes.eps}}
+%  \centerline{\includegraphics{modes.eps}}
+ % \caption{Power spectral density of 
+ % (\textit{a}) velocities and (\textit{b}) forces and torques. This example plot is for old hotwire data on a sphere in the minitunnel and will be replaced later.}
+%\label{fig:example}
+%\end{figure}
+
+% JFM example table incantation here
+%\input{tables/example.tex}
+
+
+
+
+
+
+
+%\newpage
+\section{Discussion}
+
+\subsection{Yes the instrumentation is working OK and the turbulence looks like typical cascades of eddies.}
+For flow, see figures 3, 4, 5, 6 and 7. 
+
+For force, see figure 8.  It gives exactly what is expected for drag, even including small and known effects of changing length.
+
+\subsection{Shape and size alter turbulence sensitivity}
+Figure 9 shows the effect of changing shape (aspect ratio) and relative size (triangles versus cirles) on turbulence sensitivity.  Expand. See also figures 9, 10, 11, 12. Preliminary results compare well with theoretical predictions of the disturbances an airborne organism of a given shape might experience in a particular environment.  We also found good general agreement between simplified geometric shapes and 2D animal planforms of equivalent aspect ratio.  Elongated shapes with low aspect ratio are better "filters" of turbulent noise, while high aspect ratio shapes "feel" more of the turbulence.
+
+\subsection{Comparison between measurement and filter theory}
+Theory is derived in appendix~\ref{app}.  Yeah it compares where we have measurements.  Would need a faster anemometer to get the other parts better. 
+
+%Austin says: Based on the experimental set shown in Fig 1, 2, 3, force, moment measurements were obtained with three directions ($\hat x$, $\hat y$, and $\hat z$ of Cartesian coordinates). Wind velocities to the side of the sphere were obtained simultaneously with force, moment. Shown in Fig 4 is the raw wind velocity for the eight tested conditions. Turbulence of velocity is prominent and appears generally similar among conditions. As expected, there is no distinct peak or slope, which shows that the experimental set up was stable and does not interfere with the intrinsic turbulence within the system. To further examine the turbulent flow in wind velocity and force/moment, we perform Fourier Transform on each force and moment data sets in three directions for all eight conditions using Matlab. Fourier transformed data for one of the eight conditions is shown in Fig 5 and Fig 6. Although we do not see the expected peak, which represents the vortex shedding frequency in the wind velocity Fourier transformed data (Fig 5), we can see a prominent peak in the Fourier transformed force data (Fig 6). We speculate that the hotwire anemometer might have mechanisms that internally filtered out the vortex shedding frequency, since it appears that forces and torques data in all three directions contain a distinct peak at the same frequency, with similar amplitude. These figures suggest that the force experienced by the sphere would change in respond to the turbulence at a specific frequency; the sphere hence is sensitive to turbulent airflow. If a different shape were used instead of sphere, we would expect to different sensitivity. In order to quantify or characterize this sensitivity, we will perform cross-correlation between the Fourier transform force/moment and wind velocity; we would then be able to compute a distinct transfer function as a ratio of the force and wind velocity that can characterized the sensitivity of an object of specific shape to turbulent airflow. By using different shapes such as various flying biological shapes in this model, we could gain more insights about the aerodynamic control and maneuver of different flying animals including those of extinct species; these could potentially also serve as an extra parameter for comparative study between flying animals. 
+
+
+
+
+
+%Acknowledgements should be included at the end of the paper, before the References section or any appendicies, and should be a separate paragraph without a heading. Several anonymous individuals are thanked for contributions to these instructions.
+%\section{Acknowledgements}
+We thank Robert Dudley and the Animal Flight Lab at UC Berkeley.  We also thank Tom Libby and the Center for Integrative Biomechanics Education and Research (CIBER) for use of a force sensor and laser cutter.  JD and AK acknowledge the support of the UC Berkeley Undergraduate Research Apprenticeship Program.  DE was supported by an NSF IGERT fellowship. 
+
+%\appendix
+\section{Derivation of filter theory}
+%\label{app}
+
+\subsection{Definitions}
+Have to check how Sponberg defines these, but we will compute three quantities.  I call them sensitivity in the sense that they characterize how external disturbances, which are measurable quantities in the flow environment, provide extraneous forcing inputs to the ``plant'' (it's not robustness which, in a control sense generally deals with variation of internal control parameters). 
+
+The first quantity we compute is an overall measure of turbulence sensitivity, defined as the ratio of the standard deviations ($\sigma_x = (E((x-\overline{x})^2)^{0.5}$) of force or torque and velocity: 
+\begin{equation}
+S %\si{newton\second\per\meter} 
+\equiv 
+\frac{\sigma_f } %\si{\newton}}
+{\sigma_u } % \si{\meter\per\second}}
+\quad\mbox{or}\quad
+\frac{\sigma_\tau}
+{\sigma u}
+\end{equation}
+where $S_{f_y,u_y}=\sigma_{f_y}/\sigma_{u_y}$, $S_{\tau_z,u_y}=\sigma_{\tau_z}/\sigma_{u_y}$, and so on. The dimensions of $S$ are dimensions of mechanical impedance, i.e. \si{\newton\second\per\meter} or \si{\kilo\gram\per\second} for forces, or \si{\newton\second} or \si{\kilo\gram\meter\per\second} for torques. This quantity is straightforward to compute from measured data. 
+
+Alternatively we can nondimensionalize $f$ or $\tau$ by making use of a turbulence sensitivity coefficient, $C_S$: 
+\begin{equation}
+f_y = C_{S_{f_y,u_y}} 0.5 \rho u_y^2 A
+\end{equation}
+\begin{equation}
+\tau_z = C_{S_{\tau_z,u_y}} 0.5 \rho u_y^2 A l
+\end{equation}
+where $A$ is the planform area, $l$ is a characteristic length, and $C$ are expected to vary based on shape, $\mbox{Re}$, or possibly other terms. This quantity is also straightforward to compute from measured data.  We choose the planform area for $A$ and either the body length or the integral (length) scale of the turbulent flow as $l$.  
+
+The third measure, $S(j\omega)$ or $S(jk)$, is a turbulence sensitivity transfer function, and is used to examine the frequency (or wavenumber) dependence of sensitivity.  It is obtained from the Fourier magnitudes of the force or torque, and velocity, for example: 
+\begin{equation}
+\| S_{f_y,u_y}(j\omega) \| \equiv \frac{\| F_y(j\omega) \|}{\| U_y(j\omega) \|}  
+\end{equation}
+\begin{equation}
+\| S_{f_y,u_y}(jk) \| \equiv \frac{\| F_y(jk) \|}{\| U_y(jk) \|}  
+\end{equation}
+\begin{equation}
+\| S_{\tau_z,u_y}(jk) \| \equiv \frac{\| T_z(jk) \|}{\| U_y(jk) \|}  
+\end{equation}
+
+The last two examples above use the wavenumber (spatial frequency) $k$ for the frequency domain and will allow us to examine changes in sensitivity due to shape. 
+
+\subsection{Stuff from Davidson}
+
+\begin{table}
+\caption{Notation from \cite{Davidson:2004}, Chapter 3}
+\begin{tabular}{ll}
+Total velocity field & $\mathbf{u} = \mathbf{V}+\mathbf{u'}$ \\
+Mean flow in wind tunnel & $\mathbf{V}$ \\
+Turbulent fluctuations & $\mathbf{u'}$ \\
+Size of large eddies (integral scale) & $l$ \\
+Typical fluctuating velocity of large eddies & $u$ \\
+Size of smallest eddies (Kolmogorov scale) & $\eta$ \\
+Typical fluctuating velocity of smallest eddies & $v$ \\
+\end{tabular}
+\end{table}
+
+Davidson uses:
+\begin{equation}
+\mbox{Re} = \frac{u l}{\nu}
+\end{equation}
+where $u$ is the typical fluctuating velocity of large eddies, $l$ is the size scale of large eddies, and $\nu = \SI{15e-6}{\meter\squared\per\second}$ for air. 
+
+Velocity correlation function \cite{Davidson:2004}:
+\begin{equation}
+Q_{ij} = \langle u'_i(\mathbf{x}) u'_j(\mathbf{x}+\mathbf{r}) \rangle
+\end{equation}
+
+Energy spectrum:
+\begin{equation}
+E(k) = \frac{2}{\pi} \int_0^\infty R(r) k r \sin{kr} dr
+\end{equation}
+\begin{equation}
+R(r) = \int_0^\infty E(k) \frac{\sin{kr}}{kr} dk
+\end{equation}
+Except that there is something wierd about this $E(k)$ equation. Like what's with this $kr\sin{kr}$ crap? 
+
+Properties $E(k)\geq 0$, for eddies of size $r$, $E(k)$ peaks around $k \sim \pi/r$, and:
+\begin{equation}
+\frac{1}{2}\langle \mathbf{u}^2 \rangle = \int_0^\infty E(k) dk
+\end{equation}
+
+Strictly speaking, since the energy function is nonlinear, eddies at a given size (say $r$) will contribute broadly to the energy spectrum.  However, we'll treat the force they generate as linear and see how bad it is. 
+
+Model spectrum \cite{Davidson:2004}:
+\begin{equation}
+E(k) = \hat{k}^4 (1+\hat{k}^2)^{-17/6} \exp{[-\hat{k} \mbox{Re}^{-3/4}]}, \hat{k} = kl
+\end{equation}
+
+\subsection{Simulating turbulence}
+
+First set magnitude:
+\begin{equation}
+|U(jk)| = u' \left( E(k) \right)^{\frac{1}{2}}
+\end{equation}
+Let the phase $\phi$ be random, uniformly distributed on the interval $[0,2\pi)$.
+
+$u$ is given by the inverse Fourier transform, however since we will be implementing this using discrete Fourier transform there is some normalization that needs to be done. 
+\begin{equation}
+u = ifft(U)
+\end{equation}
+
+We want Parseval's Theorem to hold, so 
+\begin{equation}
+\int_{-\infty}^\infty |u(x)|^2 dx 
+=
+\int_{-\infty}^\infty |U(k)|^2 dk
+\end{equation}
+or
+\begin{equation}
+x_s \sum |u[n]|^2 
+=
+\frac{k_s}{N} \sum |U[k]|^2
+\end{equation}
+or
+\begin{equation}
+\frac{1}{N} \sum |u[n]|^2 
+=
+\frac{k_s^2}{N^2} \sum |U[k]|^2
+\end{equation}
+or
+\begin{equation}
+\mbox{var}(u) 
+=
+\frac{k_s^2}{N^2} \sum |U[k]|^2
+\end{equation}
+
+\subsection{Shapes as spatial filters}
+
+Davidson \cite{Davidson:2004} gives Fourier transform pair for purpose of signal processing of measured turbulence spectra:
+\begin{equation}
+h(r) = \left\{
+\begin{array}{ll}
+L^{-1} & |r|<L/2 \\
+0 & \mbox{otherwise}
+\end{array} \right.
+\end{equation}
+
+
+\begin{equation}
+H(k) = \frac{1}{2\pi}\mbox{sinc}(\frac{kl}{2})
+\end{equation}
+
+
+
+
+
+
+
+
+\index{turbulence sensitivity|)}
+
+%\bibliography{references/turbulence-sensitivity}
+% copy all citations from this to main bibliography
+
+
